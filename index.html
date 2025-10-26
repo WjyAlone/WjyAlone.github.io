@@ -1,13 +1,464 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pages</title>
-    <script></script>
+    <title>HTML图片标签详解</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar h2 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #555;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #eef5ff;
+            color: #2575fc;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section h2 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .section h3 {
+            color: #444;
+            margin: 20px 0 10px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .example {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            background: #f9f9f9;
+        }
+        
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .image-example {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            background: white;
+        }
+        
+        .image-example img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .responsive-img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .attribute-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .attribute-table th, .attribute-table td {
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .attribute-table th {
+            background-color: #f0f7ff;
+            color: #2575fc;
+        }
+        
+        .attribute-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Hello</p>
-    <img src="static/assets/img/photo.png" alt="">
+    <div class="container">
+        <header>
+            <h1>HTML图片标签详解</h1>
+            <p>掌握&lt;img&gt;标签的各种用法与最佳实践</p>
+        </header>
+        
+        <div class="content-wrapper">
+            <aside class="sidebar">
+                <h2>内容导航</h2>
+                <ul>
+                    <li><a href="#basic" class="active">基本用法</a></li>
+                    <li><a href="#attributes">常用属性</a></li>
+                    <li><a href="#responsive">响应式图片</a></li>
+                    <li><a href="#lazy-loading">懒加载</a></li>
+                    <li><a href="#figure">图片与图注</a></li>
+                    <li><a href="#best-practices">最佳实践</a></li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <section id="basic" class="section">
+                    <h2>基本用法</h2>
+                    <p>HTML图片标签使用<code>&lt;img&gt;</code>元素，它是一个空元素（没有闭合标签），通过<code>src</code>属性指定图片路径。</p>
+                    
+                    <div class="code-block">
+                        &lt;img src="image.jpg" alt="图片描述"&gt;
+                    </div>
+                    
+                    <div class="example">
+                        <h3>示例：</h3>
+                        <div class="image-container">
+                            <div class="image-example">
+                                <img src="https://picsum.photos/200/150?random=1" alt="示例图片1">
+                                <p>基本图片展示</p>
+                            </div>
+                            <div class="image-example">
+                                <img src="https://picsum.photos/200/150?random=2" alt="示例图片2" width="150" height="100">
+                                <p>指定宽高的图片</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="attributes" class="section">
+                    <h2>常用属性</h2>
+                    <p><code>&lt;img&gt;</code>标签支持多种属性，用于控制图片的显示和行为。</p>
+                    
+                    <table class="attribute-table">
+                        <thead>
+                            <tr>
+                                <th>属性</th>
+                                <th>描述</th>
+                                <th>示例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>src</code></td>
+                                <td>图片路径（必需）</td>
+                                <td><code>src="image.jpg"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>alt</code></td>
+                                <td>替代文本（无障碍访问必需）</td>
+                                <td><code>alt="风景照片"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>width</code>/<code>height</code></td>
+                                <td>图片显示尺寸</td>
+                                <td><code>width="300" height="200"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>title</code></td>
+                                <td>鼠标悬停时显示的文本</td>
+                                <td><code>title="点击查看大图"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>loading</code></td>
+                                <td>加载行为（lazy/eager）</td>
+                                <td><code>loading="lazy"</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>srcset</code>/<code>sizes</code></td>
+                                <td>响应式图片源集</td>
+                                <td><code>srcset="small.jpg 480w, large.jpg 1080w"</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="example">
+                        <h3>属性示例：</h3>
+                        <div class="image-container">
+                            <div class="image-example">
+                                <img src="https://picsum.photos/200/150?random=3" alt="示例图片3" title="这是一个示例图片">
+                                <p>带title属性的图片</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="responsive" class="section">
+                    <h2>响应式图片</h2>
+                    <p>使用<code>srcset</code>和<code>sizes</code>属性可以实现响应式图片，根据设备屏幕尺寸加载合适大小的图片。</p>
+                    
+                    <div class="code-block">
+                        &lt;img src="default.jpg" 
+                             srcset="small.jpg 480w, medium.jpg 768w, large.jpg 1200w"
+                             sizes="(max-width: 600px) 480px, (max-width: 1200px) 768px, 1200px"
+                             alt="响应式图片示例"&gt;
+                    </div>
+                    
+                    <div class="example">
+                        <h3>响应式图片示例：</h3>
+                        <div class="image-container">
+                            <div class="image-example" style="width: 100%;">
+                                <img src="https://picsum.photos/600/400?random=4" 
+                                     srcset="https://picsum.photos/300/200?random=4 300w, 
+                                             https://picsum.photos/600/400?random=4 600w, 
+                                             https://picsum.photos/1200/800?random=4 1200w"
+                                     sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
+                                     alt="响应式图片示例" class="responsive-img">
+                                <p>调整浏览器窗口大小查看效果</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="lazy-loading" class="section">
+                    <h2>懒加载</h2>
+                    <p>使用<code>loading="lazy"</code>属性可以实现图片懒加载，当图片进入视口时才加载，提升页面性能。</p>
+                    
+                    <div class="code-block">
+                        &lt;img src="image.jpg" alt="懒加载图片" loading="lazy"&gt;
+                    </div>
+                    
+                    <div class="example">
+                        <h3>懒加载示例：</h3>
+                        <div class="image-container">
+                            <div class="image-example">
+                                <img src="https://picsum.photos/200/150?random=5" alt="懒加载图片1" loading="lazy">
+                                <p>懒加载图片1</p>
+                            </div>
+                            <div class="image-example">
+                                <img src="https://picsum.photos/200/150?random=6" alt="懒加载图片2" loading="lazy">
+                                <p>懒加载图片2</p>
+                            </div>
+                            <div class="image-example">
+                                <img src="https://picsum.photos/200/150?random=7" alt="懒加载图片3" loading="lazy">
+                                <p>懒加载图片3</p>
+                            </div>
+                        </div>
+                        <p>滚动页面查看懒加载效果（需要打开开发者工具的网络面板观察）</p>
+                    </div>
+                </section>
+                
+                <section id="figure" class="section">
+                    <h2>图片与图注</h2>
+                    <p>使用<code>&lt;figure&gt;</code>和<code>&lt;figcaption&gt;</code>元素可以将图片与其标题或说明关联起来。</p>
+                    
+                    <div class="code-block">
+                        &lt;figure&gt;
+                            &lt;img src="image.jpg" alt="图片描述"&gt;
+                            &lt;figcaption&gt;这是一张美丽的风景照片&lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    </div>
+                    
+                    <div class="example">
+                        <h3>图表示例：</h3>
+                        <div class="image-container">
+                            <div class="image-example" style="width: 100%;">
+                                <figure>
+                                    <img src="https://picsum.photos/400/250?random=8" alt="带图注的图片">
+                                    <figcaption>这是一张随机生成的示例图片，使用&lt;figcaption&gt;添加了图注</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="best-practices" class="section">
+                    <h2>最佳实践</h2>
+                    <ul>
+                        <li>始终为图片提供<code>alt</code>属性，提高可访问性</li>
+                        <li>使用合适的图片格式（JPEG用于照片，PNG用于透明图片，WebP用于现代浏览器）</li>
+                        <li>优化图片大小，平衡质量和加载速度</li>
+                        <li>考虑使用响应式图片技术适配不同设备</li>
+                        <li>对非关键图片使用懒加载</li>
+                        <li>使用<code>width</code>和<code>height</code>属性防止布局偏移</li>
+                        <li>考虑使用CDN加速图片加载</li>
+                    </ul>
+                    
+                    <div class="example">
+                        <h3>优化示例：</h3>
+                        <div class="code-block">
+                            &lt;!-- 优化后的图片标签示例 --&gt;
+                            &lt;img src="photo.webp" 
+                                 srcset="photo-480.webp 480w, photo-800.webp 800w"
+                                 sizes="(max-width: 600px) 480px, 800px"
+                                 alt="优化后的图片示例" 
+                                 width="800" 
+                                 height="600"
+                                 loading="lazy"&gt;
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        
+        <footer>
+            <p>HTML图片标签详解 &copy; 2023 - 学习资源</p>
+        </footer>
+    </div>
+
+    <script>
+        // 平滑滚动到锚点
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有active类
+                document.querySelectorAll('.sidebar a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                
+                // 添加当前active类
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 根据滚动位置高亮导航
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.sidebar a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
