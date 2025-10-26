@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>炫酷二次元GitHub主页</title>
+    <title>GitHub个人主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -24,11 +24,39 @@
             background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
         }
 
-        #particles-js {
+        .background-container {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .background.active {
+            opacity: 1;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 12, 41, 0.7);
         }
 
         .container {
@@ -113,18 +141,6 @@
             overflow: hidden;
         }
 
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1532798442725-41036acc7489?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
-            background-size: cover;
-            z-index: -2;
-            filter: brightness(0.4);
-        }
-
         .hero-content {
             max-width: 800px;
             margin-top: 60px;
@@ -175,6 +191,7 @@
         /* 关于区域样式 */
         .section {
             padding: 100px 0;
+            position: relative;
         }
 
         .section-title {
@@ -607,13 +624,19 @@
     </style>
 </head>
 <body>
-    <!-- 粒子背景 -->
-    <div id="particles-js"></div>
+    <!-- 动态背景容器 -->
+    <div class="background-container">
+        <div class="background active" style="background-image: url('https://images.unsplash.com/photo-1532798442725-41036acc7489?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="background" style="background-image: url('https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="background" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="background" style="background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="background-overlay"></div>
+    </div>
 
     <!-- 导航栏 -->
     <nav id="navbar">
         <div class="container nav-container">
-            <div class="logo">AnimeDev</div>
+            <div class="logo">DevPortfolio</div>
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
                 <li><a href="#about">关于</a></li>
@@ -626,11 +649,10 @@
 
     <!-- 英雄区域 -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1>欢迎来到我的二次元世界</h1>
-                <p>我是一名热爱动漫的全栈开发者，专注于创造令人惊叹的数字体验。将二次元美学与现代技术相结合，打造独特的项目。</p>
+                <h1>创新开发者</h1>
+                <p>我是一名全栈开发者，专注于创造令人惊叹的数字体验。将美学与现代技术相结合，打造独特的项目。</p>
                 <a href="#projects" class="cta-button">查看我的作品 <i class="fas fa-arrow-down"></i></a>
             </div>
         </div>
@@ -642,13 +664,13 @@
             <h2 class="section-title">关于我</h2>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="关于我">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="关于我">
                 </div>
                 <div class="about-text">
-                    <h3>二次元爱好者和代码创作者</h3>
-                    <p>你好！我是一名全栈开发者，对动漫和二次元文化充满热情。我相信代码和艺术可以完美结合，创造出令人惊叹的数字体验。</p>
+                    <h3>代码创作者</h3>
+                    <p>你好！我是一名全栈开发者，对技术和创新充满热情。我相信代码和艺术可以完美结合，创造出令人惊叹的数字体验。</p>
                     <p>我拥有5年的开发经验，擅长使用现代技术栈构建响应式、用户友好的应用程序。我的目标是创建既美观又功能强大的项目。</p>
-                    <p>当我不在编码时，我喜欢观看动漫、阅读漫画和参加动漫大会。这些兴趣也经常激发我的创作灵感。</p>
+                    <p>当我不在编码时，我喜欢探索新技术、阅读技术博客和参加开发者大会。这些兴趣也经常激发我的创作灵感。</p>
                 </div>
             </div>
         </div>
@@ -688,8 +710,8 @@
                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="项目1">
                     </div>
                     <div class="project-content">
-                        <h3>动漫社区平台</h3>
-                        <p>一个为动漫爱好者创建的社交平台，用户可以分享评论、创建收藏列表并与其他粉丝互动。</p>
+                        <h3>社区平台</h3>
+                        <p>一个为用户创建的社交平台，用户可以分享评论、创建收藏列表并与其他用户互动。</p>
                         <div class="project-tags">
                             <span>React</span>
                             <span>Node.js</span>
@@ -706,8 +728,8 @@
                         <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="项目2">
                     </div>
                     <div class="project-content">
-                        <h3>角色生成器</h3>
-                        <p>使用AI技术生成独特的动漫角色设计，用户可以自定义各种属性如发型、服装和配色方案。</p>
+                        <h3>AI生成器</h3>
+                        <p>使用AI技术生成独特的设计，用户可以自定义各种属性如风格、配色方案。</p>
                         <div class="project-tags">
                             <span>Python</span>
                             <span>TensorFlow</span>
@@ -724,8 +746,8 @@
                         <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="项目3">
                     </div>
                     <div class="project-content">
-                        <h3>动漫推荐系统</h3>
-                        <p>基于用户偏好和观看历史的智能推荐系统，帮助用户发现新的动漫作品。</p>
+                        <h3>推荐系统</h3>
+                        <p>基于用户偏好和历史的智能推荐系统，帮助用户发现新的内容。</p>
                         <div class="project-tags">
                             <span>机器学习</span>
                             <span>Flask</span>
@@ -751,7 +773,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>邮箱</h3>
-                            <p>animedev@example.com</p>
+                            <p>devportfolio@example.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -800,7 +822,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">AnimeDev</div>
+                <div class="footer-logo">DevPortfolio</div>
                 <ul class="footer-links">
                     <li><a href="#home">首页</a></li>
                     <li><a href="#about">关于</a></li>
@@ -810,49 +832,12 @@
                 </ul>
             </div>
             <div class="copyright">
-                &copy; 2023 AnimeDev. 保留所有权利。
+                &copy; 2023 DevPortfolio. 保留所有权利。
             </div>
         </div>
     </footer>
 
-    <!-- 脚本 -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // 初始化粒子背景
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#ffffff",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                }
-            }
-        });
-
         // 导航栏滚动效果
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -862,6 +847,32 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // 背景切换效果
+        const backgrounds = document.querySelectorAll('.background');
+        const sections = document.querySelectorAll('.section, .hero');
+        
+        function changeBackground() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop - windowHeight / 2 && 
+                    scrollPosition < sectionTop + sectionHeight - windowHeight / 2) {
+                    
+                    // 移除所有背景的active类
+                    backgrounds.forEach(bg => bg.classList.remove('active'));
+                    
+                    // 为当前部分对应的背景添加active类
+                    if (backgrounds[index]) {
+                        backgrounds[index].classList.add('active');
+                    }
+                }
+            });
+        }
 
         // 滚动动画
         const observerOptions = {
@@ -881,6 +892,12 @@
         document.querySelectorAll('.about-img, .about-text, .skill-card, .project-card, .contact-item, .contact-form').forEach(el => {
             observer.observe(el);
         });
+
+        // 监听滚动事件
+        window.addEventListener('scroll', changeBackground);
+        
+        // 初始化背景
+        changeBackground();
     </script>
 </body>
 </html>
